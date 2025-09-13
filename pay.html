@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grammar Master - Course & Payment</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+<style>
+  body { font-family: 'Inter', sans-serif; background: #f3f4f6; }
+  .hidden-section { display: none; }
+  .qr-box {
+    border: 4px solid #4F46E5;
+    border-radius: 1rem;
+    padding: 1rem;
+    background: #f9fafb;
+    display: inline-block;
+  }
+  /* Loading overlay */
+  #loadingOverlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 50;
+    justify-content: center;
+    align-items: center;
+  }
+  .loader {
+    border-width: 4px;
+    border-style: solid;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+    margin-bottom: 10px;
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= LOADING OVERLAY ================= -->
+<div id="loadingOverlay" class="flex">
+  <div class="bg-white p-6 rounded-xl flex flex-col items-center">
+    <div class="loader"></div>
+    <p class="text-gray-800 font-semibold">Loading...</p>
+  </div>
+</div>
+
+<!-- ================= LANDING PAGE ================= -->
+<div id="landingPage">
+  <header class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white p-6 fixed w-full z-50 shadow-lg">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-3xl font-extrabold">Grammar Master</h1>
+      <button onclick="goToPayment()" class="bg-yellow-400 hover:bg-yellow-300 text-black font-bold px-6 py-2 rounded-full shadow-lg transition transform hover:scale-105">Buy Course ₹500</button>
+    </div>
+  </header>
+
+  <section class="pt-32 pb-20 text-center bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-600 text-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl md:text-5xl font-extrabold mb-4 drop-shadow-lg" data-aos="fade-down">Master English Grammar From Basic to B2</h2>
+      <p class="text-lg md:text-xl mb-6 drop-shadow-md" data-aos="fade-up" data-aos-delay="200">
+        Improve your grammar, vocabulary, and exam skills with structured lessons, practice, and challenges.
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= COURSE FEATURES ================= -->
+  <section class="py-20 bg-gray-100">
+    <div class="container mx-auto text-center">
+      <h3 class="text-3xl font-bold mb-12" data-aos="fade-up">What You'll Get in This Course</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div class="bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition" data-aos="fade-up">
+          <h4 class="text-xl font-semibold mb-2 text-indigo-600">Grammar from Basic to B2</h4>
+          <p>Comprehensive lessons covering A1 to B2 levels.</p>
+        </div>
+        <div class="bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition" data-aos="fade-up" data-aos-delay="100">
+          <h4 class="text-xl font-semibold mb-2 text-green-600">Past Model Questions</h4>
+          <p>Practice with past exam questions of all levels.</p>
+        </div>
+        <div class="bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition" data-aos="fade-up" data-aos-delay="200">
+          <h4 class="text-xl font-semibold mb-2 text-purple-600">Vocabulary List</h4>
+          <p>Expand your vocabulary with curated lists for all levels.</p>
+        </div>
+        <div class="bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition" data-aos="fade-up" data-aos-delay="300">
+          <h4 class="text-xl font-semibold mb-2 text-yellow-500">Challenge & Quiz Sessions</h4>
+          <p>Test your knowledge at the end of each lesson.</p>
+        </div>
+        <div class="bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition" data-aos="fade-up" data-aos-delay="400">
+          <h4 class="text-xl font-semibold mb-2 text-red-500">Progress Tracking</h4>
+          <p>Monitor your improvement as you advance through the course.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= REFUND POLICY ================= -->
+  <section class="py-16 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 text-white">
+    <div class="container mx-auto max-w-3xl text-center px-4" data-aos="fade-up">
+      <h3 class="text-3xl font-bold mb-6">Refund Policy</h3>
+      <p class="text-lg">
+        If you are not satisfied with the course after purchasing, please contact us within <span class="font-semibold">3 days</span> and we will process your refund promptly.
+      </p>
+    </div>
+  </section>
+
+  <footer class="bg-gray-800 text-white py-10 mt-12">
+    <div class="container mx-auto text-center">
+      <p class="font-semibold">&copy; 2025 Grammar Master. All Rights Reserved.</p>
+    </div>
+  </footer>
+</div>
+
+<!-- ================= PAYMENT PAGE ================= -->
+<div id="paymentPage" class="hidden-section bg-gradient-to-r from-indigo-500 via-purple-600 to-pink-500 min-h-screen flex flex-col items-center justify-center">
+  <div class="bg-white p-10 rounded-3xl shadow-2xl max-w-sm text-center" data-aos="zoom-in">
+    <h1 class="text-3xl font-bold mb-6 text-gray-800">Complete Your Payment</h1>
+    <p class="text-gray-600 mb-6">Scan the QR code below and send screenshot to confirm payment.</p>
+    
+    <!-- QR rectangle box -->
+    <div class="qr-box mb-6">
+      <img src="https://i.ibb.co/kVPhczSc/qr.png" alt="Nabil Bank QR" class="w-64 h-64 object-cover rounded-lg">
+    </div>
+    
+    <!-- Tally Form Button with confirmation -->
+    <button onclick="openTally()" 
+       class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full mt-4 w-full transition-transform transform hover:scale-105">
+       Send Screenshot to Confirm Payment
+    </button>
+    
+    <p class="text-gray-500 mt-4">After submitting your screenshot, we will verify your payment and send you access to the course.</p>
+    
+    <button onclick="showPage('landingPage')" class="mt-6 block text-blue-600 hover:underline mx-auto">Back to Home</button>
+  </div>
+</div>
+
+<script>
+function showPage(pageId) {
+    document.getElementById("landingPage").style.display = "none";
+    document.getElementById("paymentPage").style.display = "none";
+    document.getElementById(pageId).style.display = "block";
+    window.scrollTo(0, 0);
+}
+
+// Loader function for Buy Course
+function goToPayment() {
+    const loader = document.getElementById('loadingOverlay');
+    loader.style.display = 'flex';
+    setTimeout(() => {
+        loader.style.display = 'none';
+        showPage('paymentPage');
+    }, 1000); // 1 second loading
+}
+
+// Open Tally form and show confirmation alert
+function openTally() {
+    window.open("https://tally.so/r/w22RR9", "_blank");
+    alert("Thank you! Your screenshot was submitted. Check your email — we will respond as fast as possible.");
+}
+
+AOS.init({ duration: 1000, once: true });
+</script>
+
+</body>
+</html>
